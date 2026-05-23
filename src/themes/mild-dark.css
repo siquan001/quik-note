@@ -1,0 +1,166 @@
+body.mild-dark{
+    background-color: #363636;
+    color: #fff;
+    color-scheme: dark;
+}
+
+body.mild-dark .navbar{
+    background-color: #2a2a2a;
+    color: #ccc;
+    box-shadow: #555 0 1px 5px;
+}
+
+body.mild-dark .main .left{
+    background-color: #2a2a2a;
+    box-shadow: #444 1px 0 3px;
+}
+
+body.mild-dark .icon-btn:hover{
+    background-color: #444;
+    color: #fff;
+}
+
+body.mild-dark .left .bt{
+    box-shadow: #666 0 0 3px;
+    color: #ccc;
+}
+
+body.mild-dark .left .bt:hover{
+    background-color: #222;
+    box-shadow: #666 0 0 8px;
+}
+
+body.mild-dark .left .bli:hover{
+    background-color: #444;
+}
+
+body.mild-dark .left .bli.active{
+    background-color: rgba(0, 153, 255, 0.075);
+}
+
+body.mild-dark .left .bli.group-item{
+    border-color: #444;
+}
+
+body.mild-dark ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #666;
+    transition: background-color .2s;
+}
+
+body.mild-dark ::-webkit-scrollbar:active{
+    background-color: #444;
+}
+body.mild-dark .hidelbtn{
+    background-color: #444;
+    color: #fff;
+}
+
+body.mild-dark .setting-box{
+    background-color: #2a2a2a;
+    box-shadow: #444 1px 0 5px;
+}
+
+body.mild-dark .setting-box .t-t{
+    text-shadow: #888 0 1px 5px;
+}
+
+body.mild-dark .setting-box h2.t-t{
+    text-shadow: #444 0 1px 5px;
+}
+
+body.mild-dark .sw-bar{
+    background-color: #666;
+}
+
+/* ===== 暗色模式 ===== */
+body.mild-dark .sl-show {
+    background: #2a2a2a;
+    color: #ccc;
+    box-shadow: #444 0 0 3px;
+}
+
+body.mild-dark .sl-show:hover {
+    background-color: #3a3a3a;
+    box-shadow: #111 0 1px 5px;
+    color: #fff;
+}
+
+body.mild-dark .sl-show:active {
+    background-color: #1f1f1f;
+    box-shadow: #111 0 1px 2px;
+}
+
+body.mild-dark .sl-drop {
+    background: #2a2a2a;
+    box-shadow: #111 0 1px 3px;
+}
+
+body.mild-dark .sl-op {
+    color: #ccc;
+}
+
+body.mild-dark .sl-op:hover {
+    background: #3a3a3a;
+}
+
+body.mild-dark .sl-op.selected {
+    background: #1a3a5c;
+    color: #5eb8ff;
+}
+
+body.mild-dark .dialog-c{
+    background-color: #2a2a2a;
+}
+
+body.mild-dark .cm-s-default .cm-quote{
+    color: #bdbdbd;
+}
+
+body.mild-dark .cm-s-default .cm-code{
+    color: #d1c29a;
+    background-color: rgba(141, 141, 102, 0.541);
+    font-family: Consolas;
+}
+
+body.mild-dark .CodeMirror-line:has(.cm-quote){
+    background-color: rgba(37, 37, 37, 0.5)!important;
+}
+
+body.mild-dark .cm-s-default .cm-keyword{
+    color: rgb(209, 1, 236);
+}
+
+body.mild-dark .cm-s-default .cm-atom{
+    color: #ff9900;
+}
+
+body.mild-dark .cm-s-default .cm-number{
+    color: #ff9900;
+}
+
+body.mild-dark .cm-s-default .cm-def,
+body.mild-dark .cm-s-default .cm-tag
+{
+    color: #09f;
+}
+
+body.mild-dark .cm-s-default .cm-variable{
+    color: #ff9900;
+}
+
+body.mild-dark .cm-s-default .cm-variable-2{
+    color: rgb(33, 139, 245);
+}
+
+body.mild-dark .cm-s-default .cm-operator{
+    color: #ff9900;
+}
+
+body.mild-dark .cm-s-default .cm-string{
+    color: #d1c29a;
+}
+
+body.mild-dark .cm-s-default .cm-string-2{
+    color: #d1c29a;
+}

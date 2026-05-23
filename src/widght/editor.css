@@ -1,0 +1,149 @@
+.editor{
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+}
+
+
+.CodeMirror{
+    font-family: inherit;
+    /* font-family: Consolas,sans-serif; */
+    height: calc(100% - 4em);
+    line-height: 1.5em;
+    background-color: transparent;
+    color: inherit;
+    max-width: 1300px;
+    width: 100%;
+    margin: 3em auto;
+    transition: margin .2s;
+    margin-bottom: 1em;
+}
+.navbar.hid~.main .right .CodeMirror{
+    margin-top: 2em;
+}
+
+.CodeMirror-foldmarker{
+    color: #09f;
+    text-shadow: #09f 1px 1px 2px, #09f -1px -1px 2px, #09f 1px -1px 2px, #09f -1px 1px 2px;
+    padding: 0 10px;
+}
+
+.CodeMirror-cursor{
+    border-color: #09f;
+    border-width: 3px;
+    box-shadow: #09f 0 0 1px;
+    transform: translateY(25%);
+}
+.CodeMirror-cursors{
+    opacity: 1;
+    transition: opacity .25s;
+}
+.CodeMirror pre.CodeMirror-line, 
+.CodeMirror pre.CodeMirror-line-like{
+    padding: 3px 0;
+    padding-left: 6em;
+    transition: padding .2s;
+    width: calc(100% - 8em);
+}
+
+.cm-s-default .cm-header{
+    font-weight: bold;
+    color: #09f;
+    text-shadow: rgba(0, 153, 255, 0.445) 0 0 3px;
+}
+
+.CodeMirror-scroll{
+    width: 100%;
+}
+
+.cm-s-default .cm-quote{
+    color: #666;
+}
+
+.cm-s-default .cm-comment{
+    color: #6a9955;
+}
+
+.cm-s-default .cm-code{
+    color: #998755;
+    background-color: rgba(250, 250, 180, 0.541);
+    font-family: Consolas;
+}
+
+.cm-s-default .cm-string-2{
+    font-family: Consolas;
+}
+.cm-s-default .cm-string{
+    font-family: Consolas;
+}
+
+.cm-s-default .cm-tag{
+    color:#00f;
+}
+.cm-s-default .cm-attribute{
+    color: #09f;
+}
+.cm-s-default .cm-link{
+    color: #06f;
+    text-decoration: none;
+}
+.cm-s-default .cm-url{
+    color: #888;
+    text-decoration: underline;
+}
+.CodeMirror-line{
+    opacity: .7;
+    transition: opacity .2s;
+}
+.CodeMirror-line:has(.cm-quote){
+    padding-left: 5em!important;
+    background-color: rgba(233, 233, 233, 0.5)!important;
+}
+
+.cm-header-1{
+    font-size: 1.3em;
+}
+
+.cm-header-2{
+    font-size: 1.2em;
+}
+.cm-header-3{
+    font-size: 1.1em;
+}
+.CodeMirror-line:has(.cm-header){
+    line-height: 2.5em;
+}
+.CodeMirror-line:has(.cm-header-1){
+    padding-left: 4.5em!important;
+}
+.CodeMirror-line:has(.cm-header-2){
+    padding-left: 3.7em!important;
+}
+.CodeMirror-line:has(.cm-header-3){
+    padding-left: 3em!important;
+}
+.CodeMirror-line:has(.cm-header-4){
+    padding-left: 2.5em!important;
+}
+.CodeMirror-line:has(.cm-header-5){
+    padding-left: 1.7em!important;
+}
+.CodeMirror-line:has(.cm-header-6){
+    padding-left: 1em!important;
+}
+
+.CodeMirror-gutters{
+    background-color: transparent;
+    border:0;
+}
+.CodeMirror-guttermarker-subtle{
+    transform: translateY(.5em);
+}
+
+.CodeMirror-activeline-background{
+    background-color: transparent;
+}
+
+.CodeMirror-activeline .CodeMirror-line{
+    opacity: 1;
+}

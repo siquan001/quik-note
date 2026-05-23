@@ -1,0 +1,50 @@
+body.mild-light{
+    background-color: #f8f8f8;
+    color: #000;
+}
+
+body.mild-light .navbar{
+    background-color: #eee;
+    box-shadow: #ccc 0 1px 5px;
+}
+
+body.mild-light .main .left{
+    background-color: #f3f3f3;
+    box-shadow: #ccc 1px 0 3px;
+}
+
+body.mild-light .icon-btn:hover{
+    background-color: #e2e2e2;
+}
+
+body.mild-light .left .bli:hover{
+    background-color: #f5f5f5;
+}
+
+body.mild-light .left .bli.active{
+    background-color: rgba(0, 153, 255, 0.075);
+}
+
+body.mild-light .left .bli.group-item{
+    border-color: #ccc;
+}
+
+body.mild-light .setting-box{
+    background-color: #eee;
+}
+
+body.mild-light .setting-box .t-t{
+    text-shadow: #ccc 0 1px 5px;
+}
+
+body.mild-light .setting-box h2.t-t{
+    text-shadow: #e2e2e2 0 1px 5px;
+}
+
+body.mild-light .sw-bar{
+    background-color: #fff;
+}
+
+body.mild-light .dialog-c{
+    background-color: #eee;
+}

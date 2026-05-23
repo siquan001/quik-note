@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "nodenext"
+  },
+  "include": ["src/**/*", "qui-core.d.ts"]
+}

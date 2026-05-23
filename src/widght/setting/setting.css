@@ -1,0 +1,199 @@
+.setting-container{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.3);
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.setting-container.show{
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.setting-box{
+    width: 400px;
+    height: 100%;
+    overflow-y: auto;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: #888 1px 0 5px;
+    position: absolute;
+    top:0;
+    left:-420px;
+    transition: left .3s;
+}
+
+.setting-container.show .setting-box{
+    left:0;
+}
+
+.setting-box .t-t{
+    text-shadow: #ccc 0 1px 5px;
+    color: #09f;
+    font-weight: bold;
+}
+
+.setting-box h1{
+    font-size: 30px;
+    line-height: 30px;
+    padding: 20px;
+}
+
+.setting-box h2.t-t{
+    font-size: 20px;
+    line-height: 26px;
+    padding: 10px 20px;
+    text-shadow: #ddd 0 1px 5px;
+}
+
+.si{
+    padding: 5px 20px;
+    height: 60px;
+}
+
+.si .si-m{
+    float: left;
+    height: 60px;
+    max-width: 60%;
+}
+.si-m .si-t{
+    font-size: 16px;
+    line-height: 20px;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.si-m .si-d{
+    font-size: 12px;
+    line-height: 14px;
+    color: #888;
+    padding-top: 5px;
+}
+
+.si-input{
+    float: right;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.switcher{
+    width: 60px;
+    position: relative;
+    cursor: pointer;
+}
+
+.switcher .sw-bar{
+    width: 40px;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+    position: absolute;
+    top:-5px;
+    left: 5px;
+}
+
+.switcher .sw-er{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ccc;
+    box-shadow: #aaa 0 0 5px;
+    position: absolute;
+    top:-10px;
+    left: 5px;
+    transition: all .3s;
+}
+
+.switcher.on .sw-er{
+    left: 25px;
+    background-color: #09f;
+    box-shadow: #09f 0 0 5px;
+}
+
+/* 根容器 */
+.selector {
+    position: relative;
+    min-width: 80px;
+    user-select: none;
+    font-size: 12px;
+}
+
+/* 展示区 */
+.sl-show {
+    padding: 8px;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    transition: all .2s;
+    box-shadow: #ccc 0 0 3px;
+    color: #444;
+}
+
+.sl-show:hover{
+    background-color: #f4f4f4;
+    box-shadow: #aaa 0 1px 5px;
+    color: #000;
+}
+
+.sl-show:active{
+    background-color: #e6e6e6;
+    box-shadow: #aaa 0 1px 2px;
+}
+
+/* 下拉列表 */
+.sl-drop {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: #ccc 0 1px 3px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .2s;
+}
+.sl-drop::-webkit-scrollbar{
+    width: 2px;
+}
+
+/* 展开状态 */
+.sl-drop.open {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+/* 选项 */
+.sl-op {
+    padding:8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.sl-op:hover {
+    background: #f0f0f0;
+}
+
+/* 选中项高亮 */
+.sl-op.selected {
+    background: #e6f7ff;
+    font-weight: 500;
+    color: #1890ff;
+}

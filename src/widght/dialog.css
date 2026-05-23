@@ -1,0 +1,139 @@
+.dialog {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.dialog-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity .3s;
+    opacity: 0;
+}
+
+.dialog-c {
+    width: max-content;
+    height: max-content;
+    max-height: 60vh;
+    max-width: 60%;
+    min-width: 150px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    transform: scale(0.5) translate(-50%, -50%);
+    transform-origin: center center;
+    transition: all .3s;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.dialog.show {
+    pointer-events: auto;
+}
+
+.dialog.show .dialog-bg {
+    opacity: 1;
+}
+
+.dialog.show .dialog-c {
+    transform: scale(1) translate(-50%, -50%);
+    opacity: 1;
+}
+
+.dialog-c input[type=text],
+.dialog-c input[type=url],
+.dialog-c input[type=number],
+.dialog-c input[type=color] {
+    height: 24px;
+    width: 250px;
+    border: 0;
+    outline: 0;
+    border-bottom: #ccc solid 1px;
+    background-color: transparent;
+    color: inherit;
+    padding: 2px;
+    transition: all .2s;
+    margin: 0 10px;
+}
+
+.dialog-c input[type=text]:focus,
+.dialog-c input[type=url]:focus,
+.dialog-c input[type=number]:focus,
+.dialog-c input[type=color]:focus {
+    border-color: #09f;
+}
+
+.btn {
+    min-width: 60px;
+    line-height: 30px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    box-shadow: #aaa 0 1px 2px;
+    background-color: #eee;
+    color: #333;
+    border-radius: 2px;
+    /* @note 适配非button @edit 2024/1/30 15:18*/
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    margin: 0 4px;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
+
+.btn:active {
+    background-color: #aaa;
+}
+
+.btn.ok {
+    background-color: #09f;
+    color: #fff;
+}
+
+.btn.ok:hover {
+    background-color: #06f;
+}
+
+.btn.ok:active {
+    background-color: #0af;
+}
+
+.btn.delete {
+    background-color: #f00;
+    color: #fff;
+}
+
+.btn.delete:hover {
+    background-color: #d00;
+}
+
+.btn.delete:active {
+    background-color: #f30;
+}
+
+.alert-alt{
+    font-size: 24px;
+    line-height: 30px;
+    padding: 10px;
+}
+.alert-text{
+    padding: 10px;
+}
+
+.btns{
+    float: right;
+    padding: 10px 0;
+}
