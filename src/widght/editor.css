@@ -18,6 +18,18 @@
     transition: margin .2s;
     margin-bottom: 1em;
 }
+
+
+*::selection{
+    background: rgba(0, 153, 255, 0.144)!important;
+}
+::selection{
+    background: rgba(0, 153, 255, 0.144)!important;
+}
+.CodeMirror-focused .CodeMirror-selected{
+    background: rgba(0, 153, 255, 0.144)!important;
+}
+
 .navbar.hid~.main .right .CodeMirror{
     margin-top: 2em;
 }

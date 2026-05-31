@@ -50,6 +50,10 @@ const settingList={
         default:true,
         title:"自动保存",
         desc:"每30s自动保存一次当前编辑的内容"
+    },
+    "welcomeText":{
+        // for welcome page text model
+        default:require("../welPTDrawer/defaultWelPT.md")
     }
 }
 

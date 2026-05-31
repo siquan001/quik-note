@@ -20,5 +20,6 @@ let editor=new CodeMirror($(".editor"),{
         }
     }
 });
+window.editor=editor;
 
 module.exports=editor;

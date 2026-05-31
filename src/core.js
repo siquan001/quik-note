@@ -83,6 +83,7 @@ const core={
         return await localforage.getItem(textId);
     },
     async setContent(groupId,textId,content){
+        if(groupId=="config-group")return;
         // the text meta is conducted by the content dynamically
         let meta=this.getMeta(content);
         let d=sto.get().texts[groupId];
@@ -99,6 +100,7 @@ const core={
         let desc;
         // filter the empty line
         let cl=content.split("\n").filter(a=>a);
+        if(cl.length==0)return {title:"[无标题]",desc:""};
         let ti=0;
 
         // to find the first header

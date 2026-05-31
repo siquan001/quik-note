@@ -7,7 +7,6 @@ let autoSaver=null;
 function initAutoSave(){
     let isautosave=getConfig("autoSave")
     if(isautosave){
-        console.log("set auto save");
         autoSaver=autoSaver||setInterval(save,30000)
     }else{
         clearInterval(autoSaver);
@@ -17,6 +16,7 @@ function initAutoSave(){
 
 const b0=a=>a<10?"0"+a:a;
 function save(){
+    if(state.group=="config-group")return;
     if(state.text){
         emit("savenow");
         let d=new Date();

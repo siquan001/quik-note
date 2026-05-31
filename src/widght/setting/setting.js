@@ -32,6 +32,12 @@ function getConfig(key){
     }
 }
 
+function setConfig(key,v){
+    pageConfig[key]=v;
+    sto.set();
+    bus.emit("config-"+key,v);
+}
+
 function drawSetting(){
     const settingBox=$(".setting-box");
     settingBox.html(`<h1 class="t-t">设置</h1>`);
@@ -58,7 +64,9 @@ function drawSetting(){
 }
 
 function reGetAll(){
-    for(let key in settingList)reGet(key);
+    settingStructure.forEach(sg=>{
+        sg.list.forEach(k=>reGet(k));
+    })
 }
 
 function reGet(key){
@@ -70,6 +78,7 @@ module.exports={
     reGetAll,
     reGet,
     getConfig,
+    setConfig,
     drawSetting,
     settingList,
     settingStructure

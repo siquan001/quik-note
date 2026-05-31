@@ -15,13 +15,19 @@ const bus=require("./bus.js");
 const core = require("./core.js");
 const state = require("./state.js");
 const editor = require("./widght/editor.js");
+const { saveText } = require("./widght/configGroup.js");
+const { getText } = require("./widght/welPTDrawer/welPTDrawer.js");
 
 // I think it's bad to put it here, but idk where to put the fucking code
 bus.on("savenow",()=>{
     console.log(state);
     if(!state.group) return;
     if(!state.text) return;
-    core.setContent(state.group,state.text,editor.getValue());
+    if(state.group=="config-group"){
+        saveText();
+    }else{
+        core.setContent(state.group,state.text,editor.getValue());
+    }
     console.log("已保存");
 })
 
@@ -32,3 +38,9 @@ setTimeout(()=>{
 
 
 settingBox.drawSetting();
+
+editor.setValue("正在加载...");
+getText().then(t=>{
+    if(state.group||state.text)return;
+    editor.setValue(t);
+})

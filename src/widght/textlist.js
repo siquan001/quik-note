@@ -5,6 +5,7 @@ const editor = require("./editor.js");
 const { icons } = require("../icon.js");
 const { confirm,alert, prompt, createDialog } = require("./dialog.js");
 const {toast, foot}=require("./toast.js");
+const { drawConfigTexts } = require("./configGroup.js");
 let groups=core.getGroupList();
 if(groups.length==0){
     // create default group,
@@ -42,47 +43,64 @@ function drawGroup(){
     g.html(''); // clear the list
     for(let i=0;i<groups.length;i++){
         let group=groups[i];
-        // --create item--
-        let li=el(".bli.group-item");
-        let ti=el(".ti");
-        let dsc=el(".dsc");
-        li.append(ti);
-        li.append(dsc);
-        ti.text(group.name);
-        dsc.text(group.desc);
-        g.append(li);
-        li.data("id",group.id);
-        li.on("click",()=>{
-            openGroup(group.id);
-        })
+        drawGroupItem(group,g);
+    }
+    drawGroupItem({
+        name:"笔记夹配置",
+        desc:"编辑QUIK笔记夹的各种信息",
+        nodel:true,
+        noedit:true,
+        sp:"config",
+        id:"config-group"
+    },g)
+}
 
-        // for delete-icon
-        if(!group.nodel){
-            let delicon=el(".delicon.m-icon",{},icons["delete"]);
-            li.append(delicon);
-            delicon.on("click",(e)=>{
-                e.stopPropagation();
-                confirm("确定要删除该笔记夹吗？该操作不可恢复！",()=>{
-                    core.removeGroup(group.id);
-                    alert("已删除");
-                    if(state.group==group.id){
-                        state.group=null;
-                        $(".left").addClass("ongroup");
-                    }
-                })
+function drawGroupItem(group,g){
+    // --create item--
+    let li=el(".bli.group-item");
+    let ti=el(".ti");
+    let dsc=el(".dsc");
+    li.append(ti);
+    li.append(dsc);
+    ti.text(group.name);
+    dsc.text(group.desc);
+    g.append(li);
+    li.data("id",group.id);
+    li.on("click",()=>{
+        openGroup(group.id);
+    })
+
+    // for delete-icon
+    if(!group.nodel){
+        let delicon=el(".delicon.m-icon",{},icons["delete"]);
+        li.append(delicon);
+        delicon.on("click",(e)=>{
+            e.stopPropagation();
+            confirm("确定要删除该笔记夹吗？该操作不可恢复！",()=>{
+                core.removeGroup(group.id);
+                alert("已删除");
+                if(state.group==group.id){
+                    state.group=null;
+                    $(".left").addClass("ongroup");
+                }
             })
-        }
+        })
+    }
 
-        // draw special icon
-        if(group.sp=="def"){
-            let delicon=el(".delicon.m-icon.sp",{title:"默认笔记夹"},icons["book"]);
-            li.append(delicon);
-        }else if(group.sp=="flash"){
-            let delicon=el(".delicon.m-icon.sp",{title:"闪念"},icons["flash"]);
-            li.append(delicon);
-        }
+    // draw special icon
+    if(group.sp=="def"){
+        let delicon=el(".delicon.m-icon.sp",{title:"默认笔记夹"},icons["book"]);
+        li.append(delicon);
+    }else if(group.sp=="flash"){
+        let delicon=el(".delicon.m-icon.sp",{title:"闪念"},icons["flash"]);
+        li.append(delicon);
+    }else if(group.sp=="config"){
+        let delicon=el(".delicon.m-icon.sp",{title:"配置"},icons["setting"]);
+        li.append(delicon);
+    }
 
-        // for edit-icon
+    // for edit-icon
+    if(!group.noedit){
         let editicon=el(".editicon.m-icon",{},icons["edit"]);
         li.append(editicon);
         editicon.on("click",(e)=>{
@@ -108,11 +126,11 @@ function drawGroup(){
                 groupEditor.hide(); // ah... I write it a bit more...
             }
         })
+    }
 
-        // if actived
-        if(state.group==group.id){
-            li.addClass("active");
-        }
+    // if actived
+    if(state.group==group.id){
+        li.addClass("active");
     }
 }
 
@@ -128,12 +146,26 @@ async function openGroup(id){
     state.text=null;
     editor.setValue("");
     $$(".group-item.active").removeClass("active");
+
+    if(id=="config-group"||groups.find(g=>g.id==id).sp=="flash"){
+        $(".newdocbtn").hide();
+    }else{
+        $(".newdocbtn").show();
+    }
+    $(".exportbtn").hide();
+
     let li=$(".group-item[data-id='"+id+"']");
     li.addClass("active");
     state.group=id;
     $(".left").removeClass("ongroup");
-    $(".textList .group-name").text(groups.find(g=>g.id==id).name);
-    drawTexts();
+    if(id=="config-group"){
+        $(".textList .group-name").text("笔记夹配置");
+        drawConfigTexts();
+    }else{
+        $(".textList .group-name").text(groups.find(g=>g.id==id).name);
+        drawTexts();
+    }
+   
 }
 
 function drawTexts(){
@@ -179,9 +211,10 @@ function drawTexts(){
     }
 }
 
+
 async function openText(id,isgpc){
     // save Text first
-    if(state.text&&(!isgpc)){
+    if(state.text&&(!isgpc)&&state.group!="config-group"){
         await core.setContent(state.group,state.text,editor.getValue());
         foot("已自动保存上一个打开的笔记",3000);
     }
@@ -190,10 +223,14 @@ async function openText(id,isgpc){
     let li=$(".text-item[data-id='"+id+"']");
     li.addClass("active");
 
+    // show export btn
+    $(".exportbtn").show();
+
     state.text=id; // change global state 
 
     let ct=await core.getContent(id);
     editor.setValue(ct);
+    editor.setOption("readOnly",false);
 }
 
 drawGroup();
@@ -205,15 +242,17 @@ $(".textList .group-name").on("click",()=>{
 
 // create the new text
 $(".newdocbtn").on("click",async ()=>{
+    // the btn is shown only when the group is actived
+
     // if no group was actived, first open the default group
     // if flash group actived, open the default group,too
     // because flash group has flash text only in principle 
-    if((!state.group)||groups.find(g=>g.id==state.group).sp=="flash"){
-        await openGroup(groups.find(g=>g.sp=="def").id);
-    }else{
-        // ensure the textlist was shown instead of the grouplist
-        await openGroup(state.group);
-    }
+    // if((!state.group)||groups.find(g=>g.id==state.group).sp=="flash"){
+    //     await openGroup(groups.find(g=>g.sp=="def").id);
+    // }else{
+    //     // ensure the textlist was shown instead of the grouplist
+    //     await openGroup(state.group);
+    // }
 
     // create and start
     let id=await core.addText(state.group);
@@ -255,3 +294,26 @@ $(".add-group").on("click",()=>{
         groupEditor.hide(); // why i should write it twice?
     }
 })
+
+$(".newdocbtn").hide();
+$(".exportbtn").hide();
+$(".exportbtn").on("click",()=>{
+    downloadTxt(editor.getValue(),$(".text-item.active .ti").text()+".md");
+})
+
+function downloadTxt(content, fileName="sth.md") {
+    // 创建 Blob（使用 UTF-8 编码，支持中文）
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+
+    link.href = url;
+    link.download = fileName;
+    // 避免在页面上显示
+    link.style.display = 'none';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    // 释放对象 URL
+    URL.revokeObjectURL(url);
+}
