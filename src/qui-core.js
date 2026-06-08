@@ -417,7 +417,7 @@
 
     // 扩展到原型链上
     let el_keys = Object.keys(el_ex);
-    el_keys.push('on', 'off', 'doevent');
+    el_keys.push('on', 'off', 'doevent','remove');
     for (var key of el_keys) {
         (function (key) {
             HTMLCollection.prototype[key] = NodeList.prototype[key] = function () {

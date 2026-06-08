@@ -1,7 +1,7 @@
 const { on, emit } = require("./bus.js");
 const state = require("./state.js");
 const { getConfig } = require("./widght/setting/setting.js");
-const { foot } = require("./widght/toast.js");
+const { foot } = require("./widght/toast/toast.js");
 
 let autoSaver=null;
 function initAutoSave(){
@@ -16,7 +16,7 @@ function initAutoSave(){
 
 const b0=a=>a<10?"0"+a:a;
 function save(){
-    if(state.group=="config-group")return;
+    if(state.gdt&&state.gdt.type=="config")return;
     if(state.text){
         emit("savenow");
         let d=new Date();

@@ -1,6 +1,6 @@
-const core = require("../core.js");
+const core = require("../_core.js");
 const state = require("../state.js");
-const editor = require("./editor.js");
+const editor = require("./editor/editor.js");
 const { getConfig, setConfig } = require("./setting/setting.js");
 
 let textlist=[

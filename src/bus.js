@@ -20,4 +20,6 @@ function emit(ev,...args){
     evs[ev].forEach(cb=>cb(...args));
 }
 
-module.exports={on,off,emit};
+const bus={on,off,emit};
+
+module.exports=bus;

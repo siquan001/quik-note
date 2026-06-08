@@ -1,7 +1,7 @@
 require("./editor.css");
 
-const bus=require("../bus.js");
-const { toast } = require("./toast.js");
+const bus=require("../../bus.js");
+const { toast } = require("../toast/toast.js");
 let editor=new CodeMirror($(".editor"),{
     value: `# QUIK 笔记夹\n\nTry to edit here...`,
     mode:  "markdown",
